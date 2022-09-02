@@ -9,9 +9,9 @@ def count_batteries_by_usage(cycles):
     if i<400:
       dict['lowCount'] += 1
     elif i<919:
-      dict['mediumCount'] +=1
+      dict['mediumCount'] += 1
     else:
-      dict['highCount'] +=1
+      dict['highCount'] += 1
    return dict
 
 
