@@ -1,25 +1,24 @@
 
 def count_batteries_by_usage(cycles):
-  int a=0,b=0,c=0
+  count={"low":0, "medium":0, "high":0}
   for i in cycles:
     if i<400:
-      a = a+1
-    elif i<919:
-      b= b+1
+      count["low"] = count["low"]+1
+    elif i>=400 and i <919:
+      count["medium"] =count["medium"]+1
     else:
-      c=c+1
-   return a,b,c
+      count["high"] = count["high"]+1
+   
+  return count
 
 
 def test_bucketing_by_number_of_cycles():
   print("Counting batteries by usage cycles...\n");
-  a,b,c = count_batteries_by_usage([100, 300, 500, 600, 900, 1000])
-  if(a == 2):
-    print('low=2')
-  if(b == 3):
-    print('medium=3')
-  if(c == 1):
-    print('high=1')
+  counts = count_batteries_by_usage([100, 300, 500, 600, 900, 1000])
+  print(counts)
+  assert(counts["low"] == 2)
+  assert(counts["medium"] == 3)
+  assert(counts["high"] == 1)
     
   print("Done counting :)")
 
